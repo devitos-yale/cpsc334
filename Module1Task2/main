@@ -1,33 +1,39 @@
+int xRes = 8160/6;
+int yRes = 768/6;
 
-float distX;          // X-axis distance to move
-float distY;          // Y-axis distance to move'
-float exponent = 2;   // Determines the curve
-float x = 0.0;        // Current x-coordinate
-float y = 0.0;        // Current y-coordinate
-float step = 0.005;    // Size of each step along the path
-float pct = 0.0;   // Percentage traveled (0.0 to 1.0)
-float beginY = 227;
+float xPos = 1360;
+float yPos = 128;
+//int xDis = ((xPos-1246)/yPos);
+
+boolean done = false;
 
 void setup() {
   //size(8160, 768); //ultimate desktop size
   //size(4608, 1360); //projector visual
-  size(768, 227); //projector/6
-  x=0;
-  y=beginY;
+  size(1360, 128); //desktop/6
+  line(1360, 128, 1247, 0);
+  line(1020, 128, 963, 0);
+  line(737, 128, 765, 0);
+  line(538, 128, 510, 0);
+  line(340, 128, 453, 0);
+  line(57, 128, 113, 0);
   
-  distX = 384;
-  distY = 227 - beginY;
+  smooth();
+  //background(0, 0, 0);
+  //noStroke();
+  fill(0,255,0);
   
 }
 
 void draw() {
-  rect(0, 0, width, height);
-  pct += step;
-
-  if (x != 384) {
-    x = (pct * distX);
-    //y = beginY - (pow(pct, 2) * distY);
-    fill(255);
-    ellipse(x, y, 20, 20);
+  //background(0, 0, 0);
+  ellipse(xPos, yPos, 40, 40);
+  
+  
+  if (yPos > 0) {
+    xPos= xPos-0.89;
+    yPos = yPos-1;
+  //done=true;
   }
+
 }
