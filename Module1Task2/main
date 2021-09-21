@@ -1,13 +1,8 @@
-//int xRes = 8160/6;
-//int yRes = 768/6;
-
 color c1,c2;
 
 float xPos = 8160;
 float yPos = 768;
-//int xDis = ((xPos-1246)/yPos);
 
-boolean done = false;
 int phase = 1;
 
 void setup() {
@@ -20,8 +15,6 @@ void setup() {
   
   c1 = color(random(255), random(255), random(255));
   c2 = color(random(255), random(255), random(255));
-  
- 
 }
 
 void draw() {
@@ -113,10 +106,8 @@ void changeColor(color c1, color c2) {
   fill(c2); //hills
   stroke(0);
   ellipse(8160, 0, 600, 1700);
-  
   ellipse(6800, 968, 600, 1700);
   ellipse(6800, 0, 400, 800);
-  
   ellipse(5440, 800, 400, 800);
   ellipse(5440, -200, 650, 1800);
   ellipse(3880, 0, 450, 1300);
@@ -134,7 +125,5 @@ void changeColor(color c1, color c2) {
   rect(5440, 0, 400, 3000);
   rect(4080, 0, 400, 3000);
   rect(1360, 0, 400, 3000);
-  rect(2720, 0, 400, 3000);
- 
-  
+  rect(2720, 0, 400, 3000); 
 }
