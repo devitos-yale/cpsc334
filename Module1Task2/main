@@ -32,26 +32,65 @@ void draw() {
   background(0, 0, 255);
   ellipse(xPos, yPos, 100, 100);
  
+  line(8160, 768, 7480, 0); //1
+  line(6030, 768, 5780, 0); //2
+  line(4330, 768, 4250, 0); //3
+  line(2880, 768, 2960, 0); //4
+  line(2040, 768, 2720, 0); //6
+  line(290, 768, 540, 0); //5
+ 
  
   if ((yPos > -100)&&(phase == 1)) { //projector 1
     xPos= xPos-0.89;
     yPos = yPos-1;
-  //done=true;
   }
-  else {
+  else if ((yPos <= -100)&&(phase == 1)) {
     xPos = 6030;
-    yPos = 768;
+    yPos = 868;
     phase = 2;
   }
- 
-  if ((yPos > -100)&&(phase == 2)) {
+  else if ((yPos > -300)&&(phase == 2)) { //projector 2
     xPos= xPos-0.32;
     yPos = yPos-1;
-  //done=true;
   }
-  else {
+  else if ((yPos <= -300)&&(phase == 2)) {
+    xPos = 4330;
+    yPos = 868;
     phase = 3;
-    xPos = 0;
+  }
+  else if ((yPos > -100)&&(phase == 3)) { //projector 3
+    xPos= xPos-0.104;
+    yPos = yPos-1;
+  }
+  else if ((yPos <= -100)&&(phase == 3)) {
+    xPos = 2880;
+    yPos = 868;
+    phase = 4;
+  }
+  else if ((yPos > -300)&&(phase == 4)) { //projector 4
+    xPos= xPos+0.104;
+    yPos = yPos-1;
+  }
+  else if ((yPos <= -300)&&(phase == 4)) {
+    xPos = 290;
+    yPos = 868;
+    phase = 5;
+  }
+  else if ((yPos > -100)&&(phase == 5)) { //projector 5
+    xPos= xPos+0.32;
+    yPos = yPos-1;
+  }
+  else if ((yPos <= -100)&&(phase == 5)) {
+    xPos = 2040;
+    yPos = 768;
+    phase = 6;
+  }
+  else if ((yPos > 100)&&(phase == 6)) { //projector 6
+    xPos= xPos+0.89;
+    yPos = yPos-1;
+  }
+  else if ((yPos <= 100)&&(phase == 6)) {
+    phase=10;
   }
 
 }
