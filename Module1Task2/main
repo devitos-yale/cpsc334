@@ -1,39 +1,76 @@
-int xRes = 8160/6;
-int yRes = 768/6;
+//int xRes = 8160/6;
 
-float xPos = 1360;
-float yPos = 128;
+//int yRes = 768/6;
+
+
+float xPos = 8160;
+
+float yPos = 768;
+
 //int xDis = ((xPos-1246)/yPos);
+
 
 boolean done = false;
 
+
 void setup() {
-  //size(8160, 768); //ultimate desktop size
-  //size(4608, 1360); //projector visual
-  size(1360, 128); //desktop/6
-  line(1360, 128, 1247, 0);
-  line(1020, 128, 963, 0);
-  line(737, 128, 765, 0);
-  line(538, 128, 510, 0);
-  line(340, 128, 453, 0);
-  line(57, 128, 113, 0);
+
+  fullScreen(SPAN);
+
+  size(8160, 768); 
+
   
+
+  surface.setLocation(1024, 0);
+
+  
+
+  line(8160, 768, 7480, 0); //1
+
+  line(6030, 768, 5780, 0); //2
+
+  line(4330, 768, 4250, 0); //3
+
+  line(2880, 768, 2960, 0); //4
+
+  line(2040, 768, 2720, 0); //6
+
+  line(290, 768, 540, 0); //5
+
+  
+
   smooth();
+
   //background(0, 0, 0);
+
   //noStroke();
+
   fill(0,255,0);
+
   
+
 }
 
+
 void draw() {
+
   //background(0, 0, 0);
-  ellipse(xPos, yPos, 40, 40);
+
+  ellipse(xPos, yPos, 60, 60);
+
   
+
   
+
   if (yPos > 0) {
+
     xPos= xPos-0.89;
+
     yPos = yPos-1;
+
   //done=true;
+
   }
+
 
 }
