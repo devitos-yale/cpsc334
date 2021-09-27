@@ -11,23 +11,23 @@ GPIO.setup(11, GPIO.IN) #joystick switch
 
 try:
 	while True: # Run forever
-		button_input = GPIO.input(18)
-    	if button_input == GPIO.HIGH:
+		#button_input = GPIO.input(18)
+    	if GPIO.input(18) == GPIO.HIGH:
        		print("Button was pushed")
 
-    	switch_input = GPIO.input(22)
-    	if switch_input == GPIO.HIGH:
+    	#switch_input = GPIO.input(22)
+    	if GPIO.input(22) == GPIO.HIGH:
         	print("Switch is high")
 
-        joystick_input_x = GPIO.input(15)
-        joystick_input_y = GPIO.input(13)
-        joystick_input_sw = GPIO.input(11)
+        #joystick_input_x = GPIO.input(15)
+        #joystick_input_y = GPIO.input(13)
+        #joystick_input_sw = GPIO.input(11)
 
-        if joystick_input_x != GPIO.LOW:
+        if GPIO.input(15) != GPIO.LOW:
         	print("Joystick x")
-        if joystick_input_y != GPIO.LOW:
+        if GPIO.input(13) != GPIO.LOW:
         	print("Joystick y")
-        if joystick_input_sw != GPIO.HIGH:
+        if GPIO.input(11) != GPIO.HIGH:
         	print("Joystick switch")
 
 finally:
