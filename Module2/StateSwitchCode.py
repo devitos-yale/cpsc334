@@ -18,11 +18,11 @@ while True: # Run forever
 		print("Switch is high")
 
 	if GPIO.input(15) != GPIO.LOW:
-    	print("Joystick x")
+		print("Joystick x")
 	if GPIO.input(13) != GPIO.LOW:
-        print("Joystick y")
-    if GPIO.input(11) != GPIO.HIGH:
-        print("Joystick switch")
+		print("Joystick y")
+	if GPIO.input(11) != GPIO.HIGH:
+		print("Joystick switch")
 
 #finally:
 	#GPIO.cleanup()
