@@ -13,8 +13,8 @@ GPIO.setup(11, GPIO.IN, pull_up_down=GPIO.PUD_UP) #joystick switch
 
 stage=1
 pygame.mixer.init()
-pygame.mixer.music.load("myFile.wav")
-pygame.mixer.music.play()
+pygame.mixer.music.load("RockGuitar.mp3")
+pygame.mixer.music.play(loops=-1)
 pygame.mixer.music.pause()
 
 #try:
@@ -30,12 +30,16 @@ while True: # Run forever
 
 	if GPIO.input(22):
 		print("Switch is high")
-		mixer.music.unpause()
+		pygame.mixer.music.unpause()
+		time.sleep(0.2)
+	else:
+		pygame.mixer.music.pause()
 
 	if GPIO.input(15) == False:
 		print("Joystick x")
 	if GPIO.input(13) == False:
-		print(GPIO.input(13))
+		#print(GPIO.input(13))
+		print("Joystick y")
 	if GPIO.input(11) == False: 
 		print("Joystick switch")
 		time.sleep(0.5)
