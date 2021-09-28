@@ -10,11 +10,17 @@ GPIO.setup(15, GPIO.IN, pull_up_down=GPIO.PUD_UP) #joystick x
 GPIO.setup(13, GPIO.IN, pull_up_down=GPIO.PUD_UP) #joystick y
 GPIO.setup(11, GPIO.IN, pull_up_down=GPIO.PUD_UP) #joystick switch
 
+int stage=1
+
 #try:
 while True: # Run forever
 	if GPIO.input(18) == False:
-		print("Button was pushed")
+		print("Stage " + stage)
 		time.sleep(0.5)
+		if (stage != 3):
+			stage = stage+1
+		else:
+			stage = 1
 
 	if GPIO.input(22):
 		print("Switch is high")
