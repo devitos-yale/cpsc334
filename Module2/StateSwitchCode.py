@@ -1,5 +1,6 @@
 import RPi.GPIO as GPIO # Import Raspberry Pi GPIO library
 import time
+import pygame
 
 GPIO.setwarnings(False) # Ignore warning for now
 GPIO.setmode(GPIO.BOARD) # Use physical pin numbering
@@ -10,12 +11,17 @@ GPIO.setup(15, GPIO.IN, pull_up_down=GPIO.PUD_UP) #joystick x
 GPIO.setup(13, GPIO.IN, pull_up_down=GPIO.PUD_UP) #joystick y
 GPIO.setup(11, GPIO.IN, pull_up_down=GPIO.PUD_UP) #joystick switch
 
-int stage=1
+stage=1
+pygame.mixer.init()
+pygame.mixer.music.load("myFile.wav")
+pygame.mixer.music.play()
+pygame.mixer.music.pause()
 
 #try:
 while True: # Run forever
 	if GPIO.input(18) == False:
-		print("Stage " + stage)
+		print("Stage " + str(stage))
+		#print(stage)
 		time.sleep(0.5)
 		if (stage != 3):
 			stage = stage+1
@@ -24,6 +30,7 @@ while True: # Run forever
 
 	if GPIO.input(22):
 		print("Switch is high")
+		mixer.music.unpause()
 
 	if GPIO.input(15) == False:
 		print("Joystick x")
