@@ -8,12 +8,13 @@ ser.port = '/dev/ttyUSB0'
 #ser.setRTS(False)
 
 ser.open()
-device = 1;
+device = 0;
+state = 1;
 
 while True:
 	line = ser.readline()
 	decoded_line = (line[0:len(line)-2].decode("utf-8"))
-	#print(str(device) + ", " + str(decoded_line))
+	print(str(device) + ", " + str(decoded_line))
 
 	#if (str(decoded_line) == 'NEW'):
 		#device = 1
@@ -29,6 +30,11 @@ while True:
 	if (device == 4): #button
 		if (int(decoded_line) == 0):
 			print('BUTTON PRESSED')
+			if (state == 2):
+				state = 0
+			else:
+				state = state+1
+			print('STATE: ' + str(state))
 
 	if (device == 5): #switch
 		if (int(decoded_line) == 0):
