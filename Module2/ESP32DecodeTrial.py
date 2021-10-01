@@ -18,19 +18,19 @@ while True:
 	#if (str(decoded_line) == 'NEW'):
 		#device = 1
 
-	#if (device == 1):
+	#if (device == 1): #joystick Y
 
-	#if (device == 2):
+	#if (device == 2): #joystick X
 
-	if (device == 3):
+	if (device == 3): #joystick switch
 		if (int(decoded_line) == 0):
 			print('JOYSTICK PRESSED')
 
-	if (device == 4):
+	if (device == 4): #button
 		if (int(decoded_line) == 0):
 			print('BUTTON PRESSED')
 
-	if (device == 5):
+	if (device == 5): #switch
 		if (int(decoded_line) == 0):
 			print('SWITCH PRESSED')
 
