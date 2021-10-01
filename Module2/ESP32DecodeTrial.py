@@ -1,7 +1,7 @@
 import serial
 
 ser = serial.Serial()
-ser.port = '/dev/cu.SLAB_USBtoUART'
+ser.port = '/dev/ttyUSB0'
 
 #ser.baudrate = 115200
 #ser.setDTR(False)
