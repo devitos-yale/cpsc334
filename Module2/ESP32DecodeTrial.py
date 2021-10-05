@@ -14,14 +14,14 @@ footstepsch = pygame.mixer.Channel(1)
 birdsch = pygame.mixer.Channel(2)
 
 #initialize to snow
-footsteps = pygame.mixer.Sound('/home/pi/cpsc334/Module2/OggSounds/SnowFootsteps.ogg')
-footstepsch.play(footsteps, loops = -1)
-footstepsch.pause()
-birds = pygame.mixer.Sound('/home/pi/cpsc334/Module2/OggSounds/SnowOwl.ogg')
-birdsch.play(birds, loops = -1)
-birdsch.pause()
-background = pygame.mixer.Sound("/home/pi/cpsc334/Module2/OggSounds/SnowBackground.ogg")
-backgroundch.play(background, loops = -1)
+#footsteps = pygame.mixer.Sound('/home/pi/cpsc334/Module2/OggSounds/SnowFootsteps.ogg')
+#footstepsch.play(footsteps, loops = -1)
+#footstepsch.pause()
+#birds = pygame.mixer.Sound('/home/pi/cpsc334/Module2/OggSounds/SnowOwl.ogg')
+#birdsch.play(birds, loops = -1)
+#birdsch.pause()
+#background = pygame.mixer.Sound("/home/pi/cpsc334/Module2/OggSounds/SnowBackground.ogg")
+#backgroundch.play(background, loops = -1)
 
 ser.open()
 device = 0;
@@ -67,7 +67,7 @@ while True:
 					birdsch.pause()
 					background = pygame.mixer.Sound("/home/pi/cpsc334/Module2/OggSounds/SnowBackground.ogg")
 					backgroundch.play(background, loops = -1)
-				else if (state == 1):
+				elif (state == 1):
 					state = 2
 					#initialize to fall
 					footsteps = pygame.mixer.Sound('/home/pi/cpsc334/Module2/OggSounds/ForestFootsteps.ogg')
@@ -77,8 +77,9 @@ while True:
 					birdsch.play(birds, loops = -1)
 					birdsch.pause()
 					background = pygame.mixer.Sound("/home/pi/cpsc334/Module2/OggSounds/ForestBackground.ogg")
+					backgroundch.set_volume(0.7)
 					backgroundch.play(background, loops = -1)
-				else
+				else:
 					state = 1
 					#initialize to beach
 					footsteps = pygame.mixer.Sound('/home/pi/cpsc334/Module2/OggSounds/BeachFootsteps.ogg')
@@ -88,6 +89,7 @@ while True:
 					birdsch.play(birds, loops = -1)
 					birdsch.pause()
 					background = pygame.mixer.Sound("/home/pi/cpsc334/Module2/OggSounds/BeachBackground.ogg")
+					backgroundch.set_volume(0.7)
 					backgroundch.play(background, loops = -1)
 
 				#start playing background
