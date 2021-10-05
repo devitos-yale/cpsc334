@@ -9,18 +9,19 @@ ser.port = '/dev/ttyUSB0' #rasppi
 pygame.init()
 pygame.mixer.init()
 
-background = pygame.mixer.Channel(0) #create channels for simultaneous playback
+backgroundch = pygame.mixer.Channel(0) #create channels for simultaneous playback
 footstepsch = pygame.mixer.Channel(1)
 birdsch = pygame.mixer.Channel(2)
 
+#initialize to snow
 footsteps = pygame.mixer.Sound('/home/pi/cpsc334/Module2/OggSounds/SnowFootsteps.ogg')
 footstepsch.play(footsteps, loops = -1)
-
-snowOwl = pygame.mixer.Sound('/home/pi/cpsc334/Module2/OggSounds/SnowOwl.ogg')
-birdsch.play(snowOwl, loops = -1)
-
 footstepsch.pause()
+birds = pygame.mixer.Sound('/home/pi/cpsc334/Module2/OggSounds/SnowOwl.ogg')
+birdsch.play(birds, loops = -1)
 birdsch.pause()
+background = pygame.mixer.Sound("/home/pi/cpsc334/Module2/OggSounds/SnowBackground.ogg")
+backgroundch.play(background, loops = -1)
 
 ser.open()
 device = 0;
@@ -56,12 +57,41 @@ while True:
 			print('BUTTON PRESSED')
 			if (prevButtonPressed == 0):
 				if (state == 2):
+					#initialize to snow
 					state = 0
-				else:
-					state = state+1
+					footsteps = pygame.mixer.Sound('/home/pi/cpsc334/Module2/OggSounds/SnowFootsteps.ogg')
+					footstepsch.play(footsteps, loops = -1)
+					footstepsch.pause()
+					birds = pygame.mixer.Sound('/home/pi/cpsc334/Module2/OggSounds/SnowOwl.ogg')
+					birdsch.play(birds, loops = -1)
+					birdsch.pause()
+					background = pygame.mixer.Sound("/home/pi/cpsc334/Module2/OggSounds/SnowBackground.ogg")
+					backgroundch.play(background, loops = -1)
+				else if (state == 1):
+					state = 2
+					#initialize to fall
+					footsteps = pygame.mixer.Sound('/home/pi/cpsc334/Module2/OggSounds/ForestFootsteps.ogg')
+					footstepsch.play(footsteps, loops = -1)
+					footstepsch.pause()
+					birds = pygame.mixer.Sound('/home/pi/cpsc334/Module2/OggSounds/ForestBirds.ogg')
+					birdsch.play(birds, loops = -1)
+					birdsch.pause()
+					background = pygame.mixer.Sound("/home/pi/cpsc334/Module2/OggSounds/ForestBackground.ogg")
+					backgroundch.play(background, loops = -1)
+				else
+					state = 1
+					#initialize to beach
+					footsteps = pygame.mixer.Sound('/home/pi/cpsc334/Module2/OggSounds/BeachFootsteps.ogg')
+					footstepsch.play(footsteps, loops = -1)
+					footstepsch.pause()
+					birds = pygame.mixer.Sound('/home/pi/cpsc334/Module2/OggSounds/BeachSeagulls.ogg')
+					birdsch.play(birds, loops = -1)
+					birdsch.pause()
+					background = pygame.mixer.Sound("/home/pi/cpsc334/Module2/OggSounds/BeachBackground.ogg")
+					backgroundch.play(background, loops = -1)
+
 				#start playing background
-				snowBackground = snowOwl = pygame.mixer.Sound("/home/pi/cpsc334/Module2/OggSounds/SnowBackground.ogg")
-				background.play(snowBackground, loops = -1)
+				#backgroundch.play(background, loops = -1)
 
 			#time.sleep(0.5) #avoid bouncing
 			print('STATE: ' + str(state))
