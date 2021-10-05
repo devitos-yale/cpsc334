@@ -3,18 +3,24 @@ import time
 import pygame
 
 ser = serial.Serial()
-#ser.port = '/dev/ttyUSB0' #rasppi
-ser.port = '/dev/cu.SLAB_USBtoUART' #mac
+ser.port = '/dev/ttyUSB0' #rasppi
+#ser.port = '/dev/cu.SLAB_USBtoUART' #mac
 
+pygame.init()
 pygame.mixer.init()
-background = pygame.mixer.Channel(0) #create channels for simultaneous playback
-footsteps = pygame.mixer.Channel(1)
-birds = pygame.mixer.Channel(2)
 
-pygame.mixer.footsteps.play("SoundFiles/SnowFootsteps.mp3", loops = -1)
-pygame.mixer.birds.play("SoundFiles/SnowOwl.mp3", loops = -1)
-pygame.mixer.footsteps.pause()
-pygame.mixer.birds.pause()
+background = pygame.mixer.Channel(0) #create channels for simultaneous playback
+footstepsch = pygame.mixer.Channel(1)
+birdsch = pygame.mixer.Channel(2)
+
+footsteps = pygame.mixer.Sound('/home/pi/cpsc334/Module2/OggSounds/SnowFootsteps.ogg')
+footstepsch.play(footsteps, loops = -1)
+
+snowOwl = pygame.mixer.Sound('/home/pi/cpsc334/Module2/OggSounds/SnowOwl.ogg')
+birdsch.play(snowOwl, loops = -1)
+
+footstepsch.pause()
+birdsch.pause()
 
 ser.open()
 device = 0;
@@ -54,7 +60,8 @@ while True:
 				else:
 					state = state+1
 				#start playing background
-				pygame.mixer.background.play("SoundFiles/SnowBackground.mp3", loops = -1)
+				snowBackground = snowOwl = pygame.mixer.Sound("/home/pi/cpsc334/Module2/OggSounds/SnowBackground.ogg")
+				background.play(snowBackground, loops = -1)
 
 			#time.sleep(0.5) #avoid bouncing
 			print('STATE: ' + str(state))
@@ -65,23 +72,18 @@ while True:
 	if (device == 5): #switch
 		if (int(decoded_line) == 0):
 			print('SWITCH PRESSED')
-			pygame.mixer.birds.unpause("SoundFiles/SnowOwl.mp3")
+			birdsch.unpause()
 		else:
-			pygame.mixer.birds.pause("SoundFiles/SnowOwl.mp3")
-
-	#if (device == 5):
-	#	device = 1
-	#else:
-	#	device = device+1
+			birdsch.pause()
 
 	if ((joystickY == 0) or (joystickX == 0) or (joystickY == 4095) or (joystickX == 4095)):
 		print('RUNNING')
-		pygame.mixer.footsteps.unpause("SoundFiles/SnowFootsteps.mp3")
+		footstepsch.unpause()
 	elif ((joystickY < 1940) or (joystickY > 2000) or (joystickX < 1860) or (joystickX > 1920)):
 		print('WALKING')
-		pygame.mixer.footsteps.unpause("SoundFiles/SnowFootsteps.mp3")
+		footstepsch.unpause()
 	else:
-		pygame.mixer.footsteps.pause("SoundFiles/SnowFootsteps.mp3")
+		footstepsch.pause()
 
 
 	device = device+1
