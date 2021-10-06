@@ -1,15 +1,3 @@
-/*
-  AnalogReadSerial
-
-  Reads an analog input on pin 0, prints the result to the Serial Monitor.
-  Graphical representation is available using Serial Plotter (Tools > Serial Plotter menu).
-  Attach the center pin of a potentiometer to pin A0, and the outside pins to +5V and ground.
-
-  This example code is in the public domain.
-
-  https://www.arduino.cc/en/Tutorial/BuiltInExamples/AnalogReadSerial
-*/
-
 // the setup routine runs once when you press reset:
 void setup() {
   // initialize serial communication at 9600 bits per second:
@@ -27,7 +15,7 @@ void loop() {
   int flipswitch = digitalRead(11);
   //int key = 5000;
   // print out the value you read:
-  Serial.println(5000);
+  Serial.println(5000); //start key
   Serial.println(joystickY);
   Serial.println(joystickX);
   Serial.println(joystickSW);
