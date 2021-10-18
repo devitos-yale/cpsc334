@@ -32,14 +32,24 @@ void setup(){
 }
 
 void loop(){
-  int values = random(0, 100); // GENERATE TEST FLOAT or
+  //int values = random(0, 100); // GENERATE TEST FLOAT or
   //int values = hallRead();
-  String msg = String(values); // CONVERT FLOAT TO STRING
+  
+  int piezoValue = analogRead(34); //Piezo sensor
+  String msg1 = String(piezoValue); // CONVERT FLOAT TO STRING
+
+  int buttonValue = digitalRead(9); //button
+  String msg2 = String(buttonValue); // CONVERT FLOAT TO STRING
+  
   //only send data when connected
   if(connected){
     //Send a packet
     udp.beginPacket(udpAddress,udpPort);
-    udp.print(msg);  // USES .print INSTEAD OF .write
+    udp.print(msg1);  // USES .print INSTEAD OF .write
+    udp.endPacket();
+
+    udp.beginPacket(udpAddress,udpPort);
+    udp.print(msg2);  // USES .print INSTEAD OF .write
     udp.endPacket();
   }
   //Wait for 1 second
