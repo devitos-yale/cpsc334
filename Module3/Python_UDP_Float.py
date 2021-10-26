@@ -1,5 +1,10 @@
 import socket
 from pythonosc import udp_client
+from pydub import AudioSegment
+
+#audio segment
+#filename = 'input.wav'
+#sound = AudioSegment.from_file(filename, format="wav")
 
 UDP_IP = "172.29.17.214"
 UDP_PORT = 8092
@@ -9,7 +14,7 @@ sock = socket.socket(socket.AF_INET, # Internet
 sock.bind((UDP_IP, UDP_PORT))
 
 sc_client = udp_client.SimpleUDPClient("127.0.0.1", 57120) # Default ip and port for SC
-#sc_client.send_message(“/print”, value)
+#sc_client.send_message('/print', value)
 
 n = 0 #packet data
 sensor = 0 #which sensor is being read
@@ -17,7 +22,7 @@ sensor = 0 #which sensor is being read
 while True:
 
 	value = 3
-	sc_client.send_message("/print", value)
+	#sc_client.send_message("/print", value)
 
 	data, addr = sock.recvfrom(1024)
 	n = data.decode("ASCII")
@@ -29,6 +34,8 @@ while True:
 		sensor = 1;
 
 	elif (sensor == 1): #BUTTON 1
+		string = str(int(n)*100)
+		#sc_client.send_message("/print", string)
 		if (int(n) == 0):
 			print('BUTTON 1 PRESSED')
 		sensor = 2
@@ -39,9 +46,11 @@ while True:
 		sensor = 3
 
 	elif (sensor == 3): #PHOTORESISTOR 1
+		sc_client.send_message("/print", n)
 		sensor = 4
 
 	elif (sensor == 4): #PHOTORESISTOR 2
+		sc_client.send_message("/p2", n)
 		sensor = 5
 
 	elif (sensor == 5): #PHOTORESISTOR 3
