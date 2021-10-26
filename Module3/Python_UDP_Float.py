@@ -41,16 +41,18 @@ while True:
 		string = str(int(n)*100)
 		#sc_client.send_message("/print", string)
 		if (int(n) == 0):
-			print('BUTTON 1 PRESSED')
-			#bass = pygame.mixer.Sound('/home/pi/cpsc334/Module3/bass.wav')
-			bass = pygame.mixer.Sound('bass.wav')
-			bass.play()
-			sc_client.send_message("/b1", n)
+			#print('BUTTON 1 PRESSED')
+			jump = pygame.mixer.Sound('jump.wav') 
+			#Source: https://freesound.org/people/meroleroman7/sounds/238284/
+			jump.play()
 		sensor = 2
 
 	elif (sensor == 2): #BUTTON 2
 		if (int(n) == 0):
-			print('BUTTON 2 PRESSED')
+			#print('BUTTON 2 PRESSED')
+			thwack = pygame.mixer.Sound('thwack.wav') 
+			#Source: https://freesound.org/people/THE_bizniss/sounds/39469/
+			thwack.play()
 		sensor = 3
 
 	elif (sensor == 3): #PHOTORESISTOR 1
