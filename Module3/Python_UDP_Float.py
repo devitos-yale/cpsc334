@@ -42,7 +42,8 @@ while True:
 		#sc_client.send_message("/print", string)
 		if (int(n) == 0):
 			print('BUTTON 1 PRESSED')
-			bass = pygame.mixer.Sound('/home/pi/cpsc334/Module3/bass.wav')
+			#bass = pygame.mixer.Sound('/home/pi/cpsc334/Module3/bass.wav')
+			bass = pygame.mixer.Sound('bass.wav')
 			bass.play()
 			sc_client.send_message("/b1", n)
 		sensor = 2
