@@ -34,9 +34,18 @@ void setup(){
 void loop(){
   //int values = random(0, 100); // GENERATE TEST FLOAT or
   //int values = hallRead();
+
+  int key = 5000;
   
-  int piezoValue = analogRead(34); //Piezo sensor
-  String msg1 = String(piezoValue); // CONVERT FLOAT TO STRING
+  int p1 = analogRead(33); //P1 sensor
+  int p2 = analogRead(32); //P2 sensor
+  int p3 = analogRead(35); //P3 sensor
+  int piezo = analogRead(36); //piezo sensor
+
+  int b1 = digitalRead(10); //button 1
+  int b2 = digitalRead(9); //button 1
+  //Serial.println(digitalRead(9));
+  //String msg1 = String(piezoValue); // CONVERT FLOAT TO STRING
 
   int buttonValue = digitalRead(9); //button
   String msg2 = String(buttonValue); // CONVERT FLOAT TO STRING
@@ -45,11 +54,31 @@ void loop(){
   if(connected){
     //Send a packet
     udp.beginPacket(udpAddress,udpPort);
-    udp.print(msg1);  // USES .print INSTEAD OF .write
+    udp.print(key);  // USES .print INSTEAD OF .write
+    udp.endPacket();
+    
+    udp.beginPacket(udpAddress,udpPort);
+    udp.print(b1);  // USES .print INSTEAD OF .write
     udp.endPacket();
 
     udp.beginPacket(udpAddress,udpPort);
-    udp.print(msg2);  // USES .print INSTEAD OF .write
+    udp.print(b2);  // USES .print INSTEAD OF .write
+    udp.endPacket();
+
+    udp.beginPacket(udpAddress,udpPort);
+    udp.print(p1);  // USES .print INSTEAD OF .write
+    udp.endPacket();
+
+    udp.beginPacket(udpAddress,udpPort);
+    udp.print(p2);  // USES .print INSTEAD OF .write
+    udp.endPacket();
+
+    udp.beginPacket(udpAddress,udpPort);
+    udp.print(p3);  // USES .print INSTEAD OF .write
+    udp.endPacket();
+
+    udp.beginPacket(udpAddress,udpPort);
+    udp.print(piezo);  // USES .print INSTEAD OF .write
     udp.endPacket();
   }
   //Wait for 1 second
