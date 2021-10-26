@@ -18,7 +18,7 @@ x = OSCFunc( { | msg, time, addr, port |
     pyFreq = msg[1].asFloat;
     //( "freq is " + pyFreq ).postln;
     a.set( \freq, pyFreq );
-}, '/print' );
+}, '/p1' );
 )
 
 (
