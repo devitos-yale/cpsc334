@@ -1,6 +1,10 @@
 import socket
 from pythonosc import udp_client
 from pydub import AudioSegment
+import pygame
+
+pygame.init()
+pygame.mixer.init()
 
 #audio segment
 #filename = 'input.wav'
@@ -26,7 +30,7 @@ while True:
 
 	data, addr = sock.recvfrom(1024)
 	n = data.decode("ASCII")
-	print("Message: ", n)
+	#print("Message: ", n)
     #print("sensor: ", sensor)
 
 	if (int(n) == 5000): #start key
@@ -38,6 +42,9 @@ while True:
 		#sc_client.send_message("/print", string)
 		if (int(n) == 0):
 			print('BUTTON 1 PRESSED')
+			bass = pygame.mixer.Sound('/home/pi/cpsc334/Module3/bass.wav')
+			bass.play()
+			sc_client.send_message("/b1", n)
 		sensor = 2
 
 	elif (sensor == 2): #BUTTON 2
@@ -46,7 +53,7 @@ while True:
 		sensor = 3
 
 	elif (sensor == 3): #PHOTORESISTOR 1
-		sc_client.send_message("/print", n)
+		sc_client.send_message("/p1", n)
 		sensor = 4
 
 	elif (sensor == 4): #PHOTORESISTOR 2
@@ -54,6 +61,7 @@ while True:
 		sensor = 5
 
 	elif (sensor == 5): #PHOTORESISTOR 3
+		sc_client.send_message("/p3", n)
 		sensor = 6
 
 	elif (sensor == 6): #PIEZO
