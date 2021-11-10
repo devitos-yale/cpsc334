@@ -56,14 +56,20 @@ while True:
 		sensor = 3
 
 	elif (sensor == 3): #PHOTORESISTOR 1
+		print('one')
+		print(n)
 		sc_client.send_message("/p1", n)
 		sensor = 4
 
 	elif (sensor == 4): #PHOTORESISTOR 2
+		print('two')
+		print(n)
 		sc_client.send_message("/p2", n)
 		sensor = 5
 
 	elif (sensor == 5): #PHOTORESISTOR 3
+		print('three')
+		print(n)
 		sc_client.send_message("/p3", n)
 		sensor = 6
 
