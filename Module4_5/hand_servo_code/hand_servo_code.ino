@@ -54,6 +54,6 @@ void loop() {
     three.write(randthree);
     four.write(randfour);
     five.write(randfive);
-    delay(500);             // waits 15ms for the servo to reach the position
+    delay(100);             // waits 15ms for the servo to reach the position
   }
 }
