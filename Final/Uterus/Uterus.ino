@@ -53,6 +53,23 @@ void loop() {
     }
     else { //power off
       power = 0;
+      digitalWrite(white1, LOW);
+      digitalWrite(white2, LOW);
+      digitalWrite(white3, LOW);
+      digitalWrite(white4, LOW);
+      digitalWrite(white5, LOW);
+      digitalWrite(ovary, LOW);
+      digitalWrite(red1, LOW);
+      digitalWrite(red2, LOW);
+      digitalWrite(red3, LOW);
+      digitalWrite(red4, LOW);
+      digitalWrite(red5, LOW);
+      digitalWrite(red6, LOW);
+      digitalWrite(red7, LOW);
+      digitalWrite(red8, LOW);
+      digitalWrite(red9, LOW);
+      digitalWrite(red10, LOW);
+      digitalWrite(red11, LOW);
     }
     
     delay(1000);
@@ -67,14 +84,14 @@ void loop() {
     delay(1000);
   }
 
-  if (stage == 0) { //follicals growing in ovary
+  if ((stage == 0) && (power == 1)) { //follicals growing in ovary
     digitalWrite(ovary, HIGH);
     delay(300);
     digitalWrite(ovary, LOW);
     delay(300);
   }
 
-  if (stage == 1) { //Ovulation + travel through fallopean tube
+  if ((stage == 1) && (power == 1)) { //Ovulation + travel through fallopean tube
     digitalWrite(white1, LOW);
     digitalWrite(white5, HIGH);
     delay(300);
@@ -92,7 +109,7 @@ void loop() {
     delay(300);
   }
 
-  if (stage == 2) { //ovum embedds + endometrium grows
+  if ((stage == 2) && (power == 1)) { //ovum embedds + endometrium grows
     digitalWrite(white1, HIGH);
     for (int i=50; i>=0; i--) {
       digitalWrite(red1, HIGH);
@@ -174,7 +191,7 @@ void loop() {
     }
   }
   
-  if (stage == 3) { //Menstruation
+  if ((stage == 3) && (power == 1)) { //Menstruation
     digitalWrite(white1, LOW);
     digitalWrite(red1, HIGH);
     digitalWrite(red2, HIGH);
